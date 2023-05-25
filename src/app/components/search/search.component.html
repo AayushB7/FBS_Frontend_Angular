@@ -1,0 +1,85 @@
+<app-navbar></app-navbar>
+<section class="vh-100" style="background-image: url('/assets/images/flightblurbg.webp');">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+  <form (ngSubmit)="onSubmit()" class="container bg-light p-4 rounded">
+    <div class="mb-3">
+      <h2 class="mb-4 text-center text-dark">Search Flights</h2><br><br>
+      <label for="departureAirport" class="form-label">Departure Airport</label>
+      <input type="text" [(ngModel)]="departureAirport" class="form-control" id="departureAirport" name="departureAirport">
+    </div>
+    <div class="mb-3">
+      <label for="arrivalAirport" class="form-label">Arrival Airport</label>
+      <input type="text" class="form-control" id="arrivalAirport" name="arrivalAirport" [(ngModel)]="arrivalAirport">
+    </div>
+    <div class="mb-3">
+      <label for="departureTime" class="form-label">Date of Journey</label>
+      <input type="date" [min]="currentDate" class="form-control" id="departureTime" name="departureTime" [(ngModel)]="departureTime">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container my-5 center bg-light">
+        <table *ngIf="resultArray!=null && resultArray.length > 0" class="table table-striped table-bordered my-5">
+          <thead>
+            <tr>
+              <th>Flight No</th>
+              <th>Departure Airport</th>
+              <th>Arrival Airport</th>
+              <th>Departure Time</th>
+              <th>Arrival Time</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of resultArray">
+              <td>{{row.flightNumber}}</td>
+              <td>{{row.departureAirport}}</td>
+              <td>{{row.arrivalAirport}}</td>
+              <td>{{row.departureTime}}</td>
+              <td>{{row.arrivalTime}}</td>
+              <td>{{row.price}}</td>
+              <td><button class = "btn btn-sm btn-primary" (click)="bookBtn(row.flightId)">Book</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- <div class="container my-5">
+  <table *ngIf="resultArray!=null && resultArray.length > 0" class="table table-striped table-bordered my-5">
+    <thead>
+      <tr>
+        <th>FlightNo</th>
+        <th>DepartureAirport</th>
+        <th>ArrivalAirport</th>
+        <th>DepartureTime</th>
+        <th>ArrivalTime</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of resultArray">
+        <td>{{row.flightNumber}}</td>
+        <td>{{row.departureAirport}}</td>
+        <td>{{row.arrivalAirport}}</td>
+        <td>{{row.departureTime}}</td>
+        <td>{{row.arrivalTime}}</td>
+        <td>{{row.price}}</td>
+        <td><button class = "btn btn-sm btn-primary" (click)="bookBtn(row.journeyId)">Book</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</section> -->
