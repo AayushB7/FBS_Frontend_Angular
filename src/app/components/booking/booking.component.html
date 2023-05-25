@@ -1,5 +1,6 @@
-<!-- <app-navbar></app-navbar>
-
+<app-navbar></app-navbar>
+<section class="vh-100" style="background-image: url('/assets/images/flightblurbg.webp');">
+    
 <table *ngIf="row != null" class="table table-striped table-bordered my-5">
   <thead>
     <tr>
@@ -32,30 +33,30 @@
   <form (ngSubmit)="onSubmit()" class="container">
     <div class="mb-3">
       <label for="userName" class="form-label">Passenger Name</label>
-      <input type="text" [(ngModel)]="bookingModel.passengerName" class="form-control" id="userName" name="userName">
+      <input type="text" [(ngModel)]="passengerName" class="form-control" id="userName" name="userName">
     </div>
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>
-      <input type="email" [(ngModel)]="bookingModel.email" class="form-control" id="email" name="email">
+      <input type="email" [(ngModel)]="email" class="form-control" id="email" name="email">
     </div>
     <div class="mb-3">
       <label for="phoneNumber" class="form-label">Phone Number</label>
-      <input type="tel" [(ngModel)]="bookingModel.phoneNumber" class="form-control" id="phoneNumber" name="phoneNumber">
+      <input type="tel" [(ngModel)]="phoneNumber" class="form-control" id="phoneNumber" name="phoneNumber">
     </div>
     <div class="mb-3">
       <label for="age" class="form-label">Age</label>
-      <input type="number" class="form-control" id="age" name="age" [(ngModel)]="bookingModel.age">
+      <input type="number" class="form-control" id="age" name="age" [(ngModel)]="age">
     </div>
     <div class="mb-3">
       <label for="gender" class="form-label">Gender</label>
-      <select class="form-control" id="gender" name="gender" [(ngModel)]="bookingModel.gender">
+      <select class="form-control" id="gender" name="gender" [(ngModel)]="gender">
         <option value="Male">Male</option>
         <option value="Female">Female</option>
       </select>
     </div>
     <div class="mb-3">
       <label for="cabinClass" class="form-label">Cabin Class</label>
-      <select class="form-control" id="cabinClass" name="cabinClass" [(ngModel)]="bookingModel.cabinClass">
+      <select class="form-control" id="cabinClass" name="cabinClass" [(ngModel)]="cabinClass">
         <option value="Economy">Economy</option>
         <option value="Business">Business</option>
         <option value="First">First</option>
@@ -63,15 +64,15 @@
     </div>
     <div class="mb-3">
       <label for="noOfTicket" class="form-label">Number of Tickets</label>
-      <input type="number" class="form-control" id="noOfTicket" name="noOfTicket" [(ngModel)]="bookingModel.noOfTicket">
+      <input type="number" class="form-control" id="noOfTicket" name="noOfTicket" [(ngModel)]="noOfTicket">
     </div>
     <button type="submit" class="btn btn-primary">Book Ticket</button>
   </form>
 </div>
+</section>
 
- -->
 
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar>
 
 <div class="container my-5">
     <table *ngIf="row != null" class="table table-striped table-bordered my-5">
@@ -131,4 +132,4 @@
         </div>
         <button type="submit" class="btn btn-primary">Book Ticket</button>
     </form>
-</div>
+</div> -->

@@ -26,10 +26,14 @@ export class AuthService {
 
     return this.http.get<any[]>(`${this.baseUrl}Search`, { headers, params });
   }
-  booking(bookObj:any, id: number): Observable<any> {
+  booking(bookObj:any): Observable<any> {
     const headers = this.getAuthorizationHeaders();
-    return this.http.post<any>(`${this.baseUrl}Booking/id?id=${id}`, bookObj, {headers});
+    return this.http.post<any>(`${this.baseUrl}Booking/1`, bookObj, {headers});
   }
+  // booking(bookObj:any, id: number): Observable<any> {
+  //   const headers = this.getAuthorizationHeaders();
+  //   return this.http.post<any>(`${this.baseUrl}Booking/id?id=${id}`, bookObj, {headers});
+  // }
 
   setToken(token:string){
     localStorage.setItem("token", token);
@@ -62,7 +66,7 @@ export class AuthService {
   }
 
 
-  getJourneyById(id:number){
+  getFlightById(id:number){
     return this.http.get(`${this.baseUrl}AirlineAuthority/id?id=${id}`);
   }
 

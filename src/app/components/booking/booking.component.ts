@@ -9,11 +9,14 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent {
-  userName: string="";
-  age: string="";
+  passengerName: string="";
+  email: string="";
+  phoneNumber: string="";
+  age: number=0;
   gender: string="";
-  ticketType: string="";
-  journeyId: number=0;
+  cabinClass: string="";
+  noOfTicket: number=0;
+  flightId: number=0;
 
   row:any;
 
@@ -22,51 +25,54 @@ export class BookingComponent {
 
   ngOnInit() {
     this.routeSubscription = this.route.queryParamMap.subscribe(params => {
-      this.journeyId = Number(params.get('id'));
+      this.flightId = Number(params.get('id'));
     });
-      // alert(this.journeyId);
-      this.auth.getJourneyById(this.journeyId).subscribe({
-        next:(res)=>{
-          this.row=res;
-        },
-        error:(err)=>{
-          this.row=null;
-          // Swal.fire({
-          //   title: 'Error!',
-          //   text: err?.error.message,
-          //   icon: 'error',
-          //   confirmButtonText: 'Ok'
-          // });
-        }
-      });
-  }
+  //     // alert(this.journeyId);
+  //     this.auth.getFlightById(this.flightId).subscribe({
+  //       next:(res)=>{
+  //         this.row=res;
+  //       },
+  //       error:(err)=>{
+  //         this.row=null;
+  //         // Swal.fire({
+  //         //   title: 'Error!',
+  //         //   text: err?.error.message,
+  //         //   icon: 'error',
+  //         //   confirmButtonText: 'Ok'
+  //         // });
+  //       }
+  //     });
+   }
 
   onSubmit(){
-    console.log(this.userName+" "+this.age+" "+this.gender+" "+this.ticketType+" "+this.journeyId);
-    this.auth.booking({
-      userName: this.userName,
-      age: this.age,
-      gender: this.gender,
-      ticketType: this.ticketType,
-      journeyId: this.journeyId
-    }).subscribe({
-      next:(res)=>{
-        // Swal.fire({
-        //   title: 'Success!',
-        //   text: "Your Ticket is Booked Successfully! - SeatNo: "+res.seatNo+", Airline: "+res.airline+", Booking ID: "+res.bookingId,
-        //   icon: 'success',
-        //   confirmButtonText: 'Ok'
-        // });
-        this.router.navigate(["home"]);
-      },
-      error:(err)=>{
-        // Swal.fire({
-        //   title: 'Error!',
-        //   text: err?.error.message,
-        //   icon: 'error',
-        //   confirmButtonText: 'Ok'
-        // });
-      }
-    });
-  }
+    console.log(this.passengerName+" "+this.email+" "+this.phoneNumber+" "+this.age+" "+this.gender+" "+this.cabinClass+" "+this.noOfTicket+" "+this.flightId);
+  //   this.authService.booking({
+  //     passengerName: this.passengerName,
+  //     email: this.email,
+  //     phoneNumber: this.phoneNumber,
+  //     age: this.age,
+  //     gender: this.gender,
+  //     cabinClass: this.cabinClass,
+  //     noOfTicket: this.noOfTicket,
+  //     flightId: this.flightId
+  //   }).subscribe({
+  //     next:(res)=>{
+  //       // Swal.fire({
+  //       //   title: 'Success!',
+  //       //   text: "Your Ticket is Booked Successfully! - SeatNo: "+res.seatNo+", Airline: "+res.airline+", Booking ID: "+res.bookingId,
+  //       //   icon: 'success',
+  //       //   confirmButtonText: 'Ok'
+  //       // });
+  //       this.router.navigate(["home"]);
+  //     },
+  //     error:(err)=>{
+  //       // Swal.fire({
+  //       //   title: 'Error!',
+  //       //   text: err?.error.message,
+  //       //   icon: 'error',
+  //       //   confirmButtonText: 'Ok'
+  //       // });
+  //     }
+  //   });
+   }
 }
