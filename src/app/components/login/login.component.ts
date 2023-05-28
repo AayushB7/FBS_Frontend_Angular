@@ -44,6 +44,8 @@ export class LoginComponent {
     // Call the login method from the AuthService with the login object
     this.authService.login(loginObj).subscribe(
       (response) => {
+        this.loginForm.reset();
+        this.authService.setToken(response.token);
         // Login successful
         console.log('Login successful', response);
         // Redirect to the desired page

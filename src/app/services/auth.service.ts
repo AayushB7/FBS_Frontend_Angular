@@ -23,13 +23,13 @@ export class AuthService {
   search(searchObj: any): Observable<any[]> {
     const headers = this.getAuthorizationHeaders();
     const params = { ...searchObj }; // You can modify this if needed
-
     return this.http.get<any[]>(`${this.baseUrl}Search`, { headers, params });
   }
-  booking(bookObj:any): Observable<any> {
+  booking(flightId: number, bookObj: any): Observable<any> {
     const headers = this.getAuthorizationHeaders();
-    return this.http.post<any>(`${this.baseUrl}Booking/1`, bookObj, {headers});
+    return this.http.post<any>(`${this.baseUrl}Booking/${flightId}`, bookObj, { headers });
   }
+
   // booking(bookObj:any, id: number): Observable<any> {
   //   const headers = this.getAuthorizationHeaders();
   //   return this.http.post<any>(`${this.baseUrl}Booking/id?id=${id}`, bookObj, {headers});
