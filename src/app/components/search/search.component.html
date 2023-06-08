@@ -31,6 +31,7 @@
         <table *ngIf="resultArray!=null && resultArray.length > 0" class="table table-striped table-bordered my-5">
           <thead>
             <tr>
+              <th>Id</th>
               <th>Flight No</th>
               <th>Departure Airport</th>
               <th>Arrival Airport</th>
@@ -41,13 +42,14 @@
           </thead>
           <tbody>
             <tr *ngFor="let row of resultArray">
+              <td>{{row.id}}</td>
               <td>{{row.flightNumber}}</td>
               <td>{{row.departureAirport}}</td>
               <td>{{row.arrivalAirport}}</td>
               <td>{{row.departureTime}}</td>
               <td>{{row.arrivalTime}}</td>
               <td>{{row.price}}</td>
-              <td><button class = "btn btn-sm btn-primary" (click)="bookBtn(row.flightId)">Book</button></td>
+              <td><button class = "btn btn-sm btn-primary" (click)="bookBtn(row.id)">Book</button></td>
             </tr>
           </tbody>
         </table>
@@ -56,6 +58,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- <div class="container my-5">
   <table *ngIf="resultArray!=null && resultArray.length > 0" class="table table-striped table-bordered my-5">

@@ -99,7 +99,7 @@ export class BookingComponent {
   gender: string = "";
   cabinClass: string = "";
   noOfTicket: number = 0;
-  flightId: number = 0;
+  bookingId: number = 0;
 
   row: any;
 
@@ -110,10 +110,10 @@ export class BookingComponent {
 
   ngOnInit() {
     this.routeSubscription = this.route.queryParamMap.subscribe(params => {
-      this.flightId = Number(params.get('id'));
+      this.bookingId = Number(params.get('id'));
     });
 
-    this.auth.getFlightById(this.flightId).subscribe({
+    this.auth.getFlightById(this.bookingId).subscribe({
       next: (res) => {
         this.row = res;
       },
@@ -124,9 +124,9 @@ export class BookingComponent {
   }
 
   onSubmit() {
-    console.log(this.passengerName + " " + this.email + " " + this.phoneNumber + " " + this.age + " " + this.gender + " " + this.cabinClass + " " + this.noOfTicket + " " + this.flightId);
+    console.log(this.passengerName + " " + this.email + " " + this.phoneNumber + " " + this.age + " " + this.gender + " " + this.cabinClass + " " + this.noOfTicket + " " + this.bookingId);
 
-    this.auth.booking(this.flightId, {
+    this.auth.booking(this.bookingId, {
       passengerName: this.passengerName,
       email: this.email,
       phoneNumber: this.phoneNumber,
@@ -134,7 +134,7 @@ export class BookingComponent {
       gender: this.gender,
       cabinClass: this.cabinClass,
       noOfTicket: this.noOfTicket,
-      flightId: this.flightId
+      bookingId: this.bookingId
     }).subscribe({
       next: (res) => {
         this.router.navigate(['/home']);

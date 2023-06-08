@@ -1,0 +1,139 @@
+
+
+  <app-navbar></app-navbar>
+  <style>
+    .body{
+      background-image: url('../../assets/images/flightblurbg.webp');
+          background-size: cover;
+          filter: blur(100);
+          height: 100vh;
+    }
+  </style>
+  <body class="body">
+<div class="container">
+    <button type="button" class="btn btn-primary my-5" data-bs-toggle="modal" data-bs-target="#addTraineModal">
+        Add Flight
+    </button>
+    <div class="table-container">
+<table *ngIf="resultArray!=null && resultArray.length>0" class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Flight Number</th>
+        <th>Departure Airport</th>
+        <th>Arrival Airport</th>
+        <th>DepartureTime</th>
+        <th>Arrival Time</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of resultArray">
+        <td>{{row.flightNumber}}</td>
+        <td>{{row.departureAirport}}</td>
+        <td>{{row.arrivalAirport}}</td>
+        <td>{{row.departureTime}}</td>
+        <td>{{row.arrivalTime}}</td>
+        <td>{{row.price}}</td>
+        <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#updateFlight" (click)="editFlightClicked(row.id)" style="background-color:rgb(198, 237, 44)">Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="deleteFlight(row.id)" style="background-color:rgb(144, 219, 252)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+
+<!-- Button trigger modal -->
+
+
+  <!-- Add Modal -->
+  <div class="modal fade" id="addFlightModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Add Flight</h5>
+          <button type="button" id="addFlightModalClose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form (ngSubmit)="addFlight()" class="container">
+                <div class="mb-3">
+                    <label for="flightNumber" class="form-label">Flight Number</label>
+                    <input type="text" [(ngModel)]="flightNumber" class="form-control" id="flightNumber" name="flightNumber">
+                </div>
+                <div class="mb-3">
+                    <label for="departureAirport" class="form-label">Departure Airport</label>
+                    <input type="text" [(ngModel)]="departureAirport" class="form-control" id="departureAirport" name="departureAirport">
+                </div>
+                <div class="mb-3">
+                    <label for="arrivalAirport" class="form-label">Arrival Airport</label>
+                    <input type="text" [(ngModel)]="arrivalAirport" class="form-control" id="arrivalAirport" name="arrivalAirport">
+                </div>
+                <div class="mb-3">
+                    <label for="departureTime" class="form-label">Departure Time</label>
+                    <input type="datetime-local" [min]="currentDate" class="form-control" id="departureTime" name="departureTime"
+                        [(ngModel)]="departureTime">
+                </div>
+                <div class="mb-3">
+                  <label for="arrivalTime" class="form-label">Arrival Time</label>
+                  <input type="datetime-local" [min]="currentDate" class="form-control" id="arrivalTime" name="arrivalTime"
+                      [(ngModel)]="arrivalTime">
+              </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="text" [(ngModel)]="price" class="form-control" id="price" name="price">
+                </div>
+
+                <button type="submit" class="btn btn-success">Add Flight</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Update Modal -->
+  <div class="modal fade" id="updateFlight" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Update Flight Details</h5>
+          <button type="button" id="updateFlightModalClose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form (ngSubmit)="editFlight()" class="container">
+                <div class="mb-3">
+                    <label for="flightNumber" class="form-label">Flight Number</label>
+                    <input type="text" [(ngModel)]="flightNumber" class="form-control" id="flightNumber" name="flightNumber">
+                </div>
+                <div class="mb-3">
+                    <label for="departureAirport" class="form-label">Departure Airport</label>
+                    <input type="text" [(ngModel)]="departureAirport" class="form-control" id="departureAirport" name="departureAirport">
+                </div>
+                <div class="mb-3">
+                    <label for="arrivalAirport" class="form-label">Arrival Airport</label>
+                    <input type="text" [(ngModel)]="arrivalAirport" class="form-control" id="arrivalAirport" name="arrivalAirport">
+                </div>
+                <div class="mb-3">
+                    <label for="departureTime" class="form-label">Departure Time</label>
+                    <input type="datetime-local" [min]="currentDate" class="form-control" id="departureTime" name="departureTime"
+                        [(ngModel)]="departureTime">departureTime
+                </div>
+                <div class="mb-3">
+                  <label for="arrivalTime" class="form-label">Arrival Time</label>
+                  <input type="datetime-local" [min]="currentDate" class="form-control" id="arrivalTime" name="arrivalTime"
+                      [(ngModel)]="arrivalTime">arrivalTime
+              </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="text" [(ngModel)]="price" class="form-control" id="price" name="price">
+                </div>
+                
+                <button type="submit" class="btn btn-success">Update</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

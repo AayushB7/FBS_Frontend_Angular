@@ -8,8 +8,10 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavbarComponent {
   loggedIn:boolean=this.authService.isLoggedIn();
+  // isAdmin:boolean=this.authService.getRoleFromToken();
   constructor(private authService:AuthService){
     this.loggedIn=this.authService.isLoggedIn();
+    // this.loggedIn=this.authService.getRoleFromToken();
   }
   logout(){
     this.loggedIn=false;

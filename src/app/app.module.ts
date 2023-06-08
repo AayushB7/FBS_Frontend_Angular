@@ -9,10 +9,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { RouterModule } from '@angular/router';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { AdminComponent } from './components/admin/admin.component';
+import { FlightDetailComponent } from './components/flight-detail/flight-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +25,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     SearchComponent,
     NavbarComponent,
     HomeComponent,
-    BookingComponent 
+    BookingComponent,
+    AdminComponent,
+    FlightDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,

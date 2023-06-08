@@ -53,11 +53,11 @@ export class SearchComponent {
         }
       );
   }
-  // bookBtn(fId: number){
+  // bookBtn(Id: number){
   //   this.router.navigate([`booking/1`]);
   // }
-  bookBtn(flightId: number) {
-    this.router.navigate([`booking/${flightId}`]);
+  bookBtn(Id: number) {
+    this.router.navigate([`booking/1`]);
   }
 
 }
